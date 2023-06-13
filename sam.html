@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Your Books</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <style>
+      /* add some basic styles to make the form look nice */
+      
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-family: sans-serif;
+        margin-top: 50px;
+      }
+      input[type="text"] {
+        padding: 8px;
+        margin-bottom: 10px;
+        width: 100%;
+        border: none;
+        border-bottom: 1px solid black;
+        font-size: 16px;
+      }
+      button[type="submit"] {
+        background-color: blue;
+        color: white;
+        padding: 8px 16px;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      /* add some styles for the book list */
+      ul {
+        list-style: none;
+        margin-top: 50px;
+        padding: 0;
+        font-family: sans-serif;
+      }
+      li {
+        margin-bottom: 10px;
+        font-size: 16px;
+      }
+      span {
+        font-weight: bold;
+        margin-right: 10px;
+      }
+      .vig{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-family: sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+        <div class=" shadow-lg p-5 mb-9 mt-2 bg-body shadow-danger">
+            <h1>LIBRARY MANAGEMENT</h1>
+            <div class="flex">
+      <label for="bookName" class="col-sm-2 col-form-label">
+        <span>Book name:</span>
+        <input type="text" id="bookNameInput">
+      </label>
+      <label for="Author" class="col-sm-2 col-form-label">
+        <span>Author:</span>
+        <input type="text" id="authorInput">
+      </label>
+      <label>
+        <span>Genre:</span>
+        <input type="text" id="genreInput">
+      </label>
+      <button type="submit" id="submitBtn">Add Book</button></div></div>
+    </form>
+
+    <ul id="bookList"></ul>
+
+    <script>
+      const form = document.querySelector('form');
+      const bookList = document.querySelector('#bookList');
+
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const bookName = document.querySelector('#bookNameInput').value;
+        const author = document.querySelector('#authorInput').value;
+        const genre = document.querySelector('#genreInput').value;
+        const bookItem = document.createElement('li');
+        bookItem.innerHTML = `<div class="vig">${bookName}>by ${author} (${genre})</div`;
+        bookList.appendChild(bookItem);
+        form.reset();
+      });
+    </script>
+  </body>
+</html>

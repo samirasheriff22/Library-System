@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Three-Tier JavaScript App</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<style>
+    h1{
+        text-align: center;
+    }
+</style>
+<body>
+<h1 >three-Tier JavaScript APP</h1>
+<div class="container my-3 shadow-lg text-dark bg-white">
+<form>
+<label for="name">Name:</label>
+<input type="text" id="name" name="name">
+<button type="button" onclick="addData()">Add</button>
+</form>
+<div id="output"></div></div>
+<script src="app.js"></script>
+<script>
+var myApp = (function() {
+var data = ['surya', 'chuu', 'vsurya'];
+return {
+getData: function() {
+return data;
+},
+addData: function(name) {
+data.push(name);
+}
+};
+})();
+var outputDiv = document.getElementById('output');
+var data = myApp.getData();
+outputDiv.innerHTML = 'Data: ' + data.join(', ');
+function addData() {
+var nameInput = document.getElementById('name');
+var name = nameInput.value;
+myApp.addData(name);
+data = myApp.getData();
+outputDiv.innerHTML = 'Data: ' + data.join(', ');
+nameInput.value = '';
+}
+</script>
+</body>
+</html>
